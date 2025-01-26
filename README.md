@@ -69,8 +69,6 @@ A simple terminal-based contact management system written in C.
 
 This project is licensed under the GPL-2.0 License. 
 
-You are free to use, modify, and distribute this software, provided that the original copyright notice and permission notice are included in all copies or substantial portions of the software.
-
 See the [LICENSE](LICENSE) file for full license details.
 
 
