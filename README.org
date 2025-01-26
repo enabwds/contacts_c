@@ -1,0 +1,69 @@
+* Contact Management System
+
+** Overview
+This program is a Contact Management System implemented in C. It allows users to manage a list of contacts, including functionalities such as adding, editing, searching, sorting, and deleting contacts. The contacts are stored in a CSV file for persistence.
+
+** Features
+- Add new contacts.
+- Display all stored contacts.
+- Search for a contact by name.
+- Edit an existing contact's details.
+- Delete a contact by name.
+- Save and load contacts to/from a CSV file.
+- Prevents duplicate contacts.
+- Automatically sorts contacts alphabetically by name.
+
+** How to Build
+To compile the program, use a C compiler such as `gcc` or `clang`:
+
+#+BEGIN_SRC shell
+gcc -o contact_manager main.c
+#+END_SRC
+
+Make sure to include the file `error_codes.h` in the same directory as the source file.
+
+** How to Run
+After compiling, run the program with the following command:
+
+#+BEGIN_SRC shell
+./contact_manager
+#+END_SRC
+
+** Usage Instructions
+1. Run the program and follow the menu options:
+   - `1`: Add a new contact.
+   - `2`: Display all contacts.
+   - `3`: Search for a contact by name.
+   - `4`: Edit a contact's details.
+   - `5`: Delete a contact by name.
+   - `6`: Save and exit the program.
+
+2. Contacts are stored in `contacts.csv` for persistence between runs.
+
+** File Structure
+- **contact_manager.c**: The main source code file containing the program logic.
+- **error_codes.h**: A header file that defines error codes used in the program.
+- **contacts.csv**: The default file used to store contacts.
+
+** Error Handling
+- The program handles common errors, such as:
+  - Memory allocation failures.
+  - File-related errors (e.g., file not found, unable to open).
+  - Invalid contact input or count.
+
+** License
+This program is licensed under the **GNU General Public License v2.0**. See the LICENSE file for details.
+
+** Future Enhancements
+- Support for additional contact fields (e.g., address).
+- Enhanced search functionality (e.g., partial matching).
+- Support for exporting contacts to different file formats (e.g., JSON, XML).
+
+** License Text
+#+BEGIN_QUOTE
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+#+END_QUOTE
