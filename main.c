@@ -33,6 +33,26 @@ Contact deserialize(const char *data) {
     return contact;
 }
 
+void trimWhitespace(char *str) {
+    // Trim leading spaces
+    while (isspace((unsigned char)*str)) {
+        str++;
+    }
+
+    // If the string is empty after trimming, return
+    if (*str == 0) {
+        return;
+    }
+
+    // Trim trailing spaces
+    char *end = str + strlen(str) - 1;
+    while (end > str && isspace((unsigned char)*end)) {
+        end--;
+    }
+
+    // Null-terminate the string after the last non-space character
+    *(end + 1) = 0;
+}
 // Helper function for case-insensitive string comparison
 int strcasecmp_custom(const char *s1, const char *s2) {
     while (*s1 && *s2 && tolower((unsigned char)*s1) == tolower((unsigned char)*s2)) {
@@ -66,7 +86,12 @@ int binarySearch(const Contact *contacts, int contactCount, const char *name) {
 
 // Function to search for a contact by name using binary search
 void searchContact(const Contact *contacts, int contactCount, const char *name) {
-    int index = binarySearch(contacts, contactCount, name);
+    char trimmedName[MAX_STRING];
+    strncpy(trimmedName, name, MAX_STRING - 1);
+    trimmedName[MAX_STRING - 1] = '\0';
+    trimWhitespace(trimmedName);
+
+    int index = binarySearch(contacts, contactCount, trimmedName);
     if (index != -1) {
         printf("Contact found:\n");
         printf("Name: %s\n", contacts[index].name);
@@ -76,7 +101,6 @@ void searchContact(const Contact *contacts, int contactCount, const char *name) 
         printf("Contact not found.\n");
     }
 }
-
 
 // Function to check for duplicates
 int checkForDuplicates(const Contact *contacts, int contactCount, const Contact *newContact) {
@@ -91,26 +115,7 @@ int checkForDuplicates(const Contact *contacts, int contactCount, const Contact 
 }
 
 // Function to trim leading and trailing spaces
-void trimWhitespace(char *str) {
-    // Trim leading spaces
-    while (isspace((unsigned char)*str)) {
-        str++;
-    }
 
-    // If the string is empty after trimming, return
-    if (*str == 0) {
-        return;
-    }
-
-    // Trim trailing spaces
-    char *end = str + strlen(str) - 1;
-    while (end > str && isspace((unsigned char)*end)) {
-        end--;
-    }
-
-    // Null-terminate the string after the last non-space character
-    *(end + 1) = 0;
-}
 
 void addContact(Contact **contacts, int *contactCount, int *capacity) {
     if (*contactCount >= *capacity) {
@@ -127,15 +132,18 @@ void addContact(Contact **contacts, int *contactCount, int *capacity) {
 
     printf("Enter name: ");
     fgets(newContact.name, MAX_STRING, stdin);
-    newContact.name[strcspn(newContact.name, "\n")] = 0;  // Remove trailing newline
+    newContact.name[strcspn(newContact.name, "\n")] = 0;  // Remove trailing newline  
+    trimWhitespace(newContact.name); // Remove remaining whitespaces
 
     printf("Enter phone number: ");
     fgets(newContact.phoneNumber, MAX_STRING, stdin);
     newContact.phoneNumber[strcspn(newContact.phoneNumber, "\n")] = 0;
+    trimWhitespace(newContact.phoneNumber);
 
     printf("Enter email: ");
     fgets(newContact.email, MAX_STRING, stdin);
     newContact.email[strcspn(newContact.email, "\n")] = 0;
+    trimWhitespace(newContact.email);
 
     if (checkForDuplicates(*contacts, *contactCount, &newContact)) {
         printf("The contact already exists!\n");
@@ -215,6 +223,7 @@ void editContact(Contact *contacts, int contactCount) {
     printf("Enter the name of the contact to edit: ");
     fgets(name, MAX_STRING, stdin);
     name[strcspn(name, "\n")] = 0;
+    trimWhitespace(name);
 
     int index = findContactIndex(contacts, contactCount, name);
     if (index == -1) {
@@ -229,6 +238,7 @@ void editContact(Contact *contacts, int contactCount) {
     char newPhoneNumber[MAX_STRING];
     fgets(newPhoneNumber, MAX_STRING, stdin);
     newPhoneNumber[strcspn(newPhoneNumber, "\n")] = 0;
+    trimWhitespace(newPhoneNumber);
     if (strlen(newPhoneNumber) > 0) {
         strcpy(contact->phoneNumber, newPhoneNumber);
     }
@@ -237,6 +247,7 @@ void editContact(Contact *contacts, int contactCount) {
     char newEmail[MAX_STRING];
     fgets(newEmail, MAX_STRING, stdin);
     newEmail[strcspn(newEmail, "\n")] = 0;
+    trimWhitespace(newEmail);
     if (strlen(newEmail) > 0) {
         strcpy(contact->email, newEmail);
     }
