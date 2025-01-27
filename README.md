@@ -67,16 +67,16 @@ Contact Management System
 - Case-insensitive comparison is used for names, but sorting and searching assume ASCII characters.
 
 ## Features to be added
-= [] input validation
-- [] Sorting by fields
-- [] Groups (Work, family, friends, etc)
-- [] Import/export files as other formats (JSON, vCard, etc)
-- [] Undo/Redo
-- [] Encryption
-- [] GUI (Will be done in a long time)
-- [] Audit log
-- [] Confirmation prompts for destructive actions
-- [] Multi-field search
+- [ ] input validation
+- [ ] Sorting by fields
+- [ ] Groups (Work, family, friends, etc)
+- [ ] Import/export files as other formats (JSON, vCard, etc)
+- [ ] Undo/Redo
+- [ ] Encryption
+- [ ] GUI (Will be done in a long time)
+- [ ] Audit log
+- [ ] Confirmation prompts for destructive actions
+- [ ] Multi-field search
 
 ## Contributing
 - Contributions, bug reports, and feature requests are welcome. Please submit them via the GitHub repository
