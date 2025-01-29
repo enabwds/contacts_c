@@ -4,7 +4,7 @@
 #include <ctype.h>
 #include "error_codes.h"
 
-#define MAX_STRING 100
+#define MAX_STRING 128
 
 // Structure to represent a contact
 typedef struct {
@@ -53,6 +53,7 @@ void trimWhitespace(char *str) {
     // Null-terminate the string after the last non-space character
     *(end + 1) = 0;
 }
+
 // Helper function for case-insensitive string comparison
 int strcasecmp_custom(const char *s1, const char *s2) {
     while (*s1 && *s2 && tolower((unsigned char)*s1) == tolower((unsigned char)*s2)) {
