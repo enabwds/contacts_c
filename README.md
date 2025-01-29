@@ -23,15 +23,16 @@ This is a simple contact management system written in C. It allows users to mana
 
 ### Prerequisites
 - GCC or any C compiler
+- Git
 
-### Compile the Program
+### Clone, Compile, and execute the Program
 ```bash
+git clone https://github.com/enabwds/contacts_c
+cd contacts_c
 gcc -o contact_manager main.c
-```
-### Run the program
-```bash
 ./contact_manager
 ```
+
 ## Usage
 1. Upon running the program, you will be presented with a menu:
 ```
