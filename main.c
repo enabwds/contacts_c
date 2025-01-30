@@ -63,7 +63,23 @@ int strcasecmp_custom(const char *s1, const char *s2) {
     return tolower((unsigned char)*s1) - tolower((unsigned char)*s2);
 }
 
+int isValidEmail(const char *email) {
+    if (email == NULL || strlen(email) < 3) {  // Minimum length: a@b
+        return 0;
+    }
 
+    char *at = strchr(email, '@');  // Find '@' character
+    if (!at || at == email || *(at + 1) == '\0') {  
+        return 0;  // '@' must not be at the start or end
+    }
+
+    char *dot = strrchr(at, '.');  // Find last '.'
+    if (!dot || dot <= at + 1 || *(dot + 1) == '\0') {  
+        return 0;  // '.' must be after '@' and not at the end
+    }
+
+    return 1;  // Valid email format
+}
 
 // Function to perform binary search on the contacts array
 int binarySearch(const Contact *contacts, int contactCount, const char *name) {
@@ -146,6 +162,10 @@ void addContact(Contact **contacts, int *contactCount, int *capacity) {
     newContact.email[strcspn(newContact.email, "\n")] = 0;
     trimWhitespace(newContact.email);
 
+  if (!isValidEmail(newContact.email)) {
+    printf("Error: invalid email!\n");
+    return;
+
     if (checkForDuplicates(*contacts, *contactCount, &newContact)) {
         printf("The contact already exists!\n");
         return;
@@ -155,7 +175,7 @@ void addContact(Contact **contacts, int *contactCount, int *capacity) {
     (*contactCount)++;
     printf("Contact added.\n");
 }
-
+}
 
 // Comparison function for qsort
 int compareContacts(const void *a, const void *b) {
@@ -249,9 +269,14 @@ void editContact(Contact *contacts, int contactCount) {
     fgets(newEmail, MAX_STRING, stdin);
     newEmail[strcspn(newEmail, "\n")] = 0;
     trimWhitespace(newEmail);
-    if (strlen(newEmail) > 0) {
-        strcpy(contact->email, newEmail);
+    
+    if (strlen(newEmail) > 0) {  // Only validate if user enters a new email
+    if (!isValidEmail(newEmail)) {
+        printf("Error: Invalid email format!\n");
+        return;
     }
+    strcpy(contact->email, newEmail);
+}
 
     printf("Contact updated.\n");
 }
@@ -378,4 +403,3 @@ int main() {
     free(contacts);  // Free allocated memory before exiting
     return 0;
 }
-
