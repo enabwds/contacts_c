@@ -165,7 +165,7 @@ void addContact(Contact **contacts, int *contactCount, int *capacity) {
   if (!isValidEmail(newContact.email)) {
     printf("Error: invalid email!\n");
     return;
-
+  }
     if (checkForDuplicates(*contacts, *contactCount, &newContact)) {
         printf("The contact already exists!\n");
         return;
@@ -174,7 +174,7 @@ void addContact(Contact **contacts, int *contactCount, int *capacity) {
     (*contacts)[*contactCount] = newContact;
     (*contactCount)++;
     printf("Contact added.\n");
-}
+
 }
 
 // Comparison function for qsort
@@ -292,11 +292,17 @@ void deleteContact(Contact **contacts, int *contactCount, const char *name) {
     for (int i = index; i < *contactCount - 1; ++i) {
         (*contacts)[i] = (*contacts)[i + 1];
     }
+    char confirmation;
+    printf("Are you sure you want to delete this contact?[Y/N]: ");
+    scanf("%c", &confirmation);
+    if (confirmation == 'N' || confirmation == 'n') {
+    return;
+   }
+    if (confirmation == 'Y' || confirmation == 'y') {
     (*contactCount)--;
-
     printf("Contact deleted.\n");
 }
-
+}
 // Function to load contacts from a file
 void loadContacts(Contact **contacts, int *contactCount, int *capacity, const char *filename) {
     FILE *file = fopen(filename, "r");
