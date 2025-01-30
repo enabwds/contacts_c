@@ -12,6 +12,7 @@ This is a simple contact management system written in C. It allows users to mana
 - **Save and Load Contacts**: Save contacts to a CSV file and load them when the program starts.
 - **Duplicate Detection**: Prevent duplicate contacts from being added.
 - **Whitespace Trimming**: Automatically trim leading and trailing whitespace for inputs.
+- **Input Validation**: Checks for valid emails.
 
 ## File Structure
 
@@ -68,7 +69,7 @@ Contact Management System
 - Case-insensitive comparison is used for names, but sorting and searching assume ASCII characters.
 
 ## Features to be added
-- [ ] input validation
+- [x] Input validation
 - [ ] Sorting by fields
 - [ ] Groups (Work, family, friends, etc)
 - [ ] Import/export files as other formats (JSON, vCard, etc)
