@@ -22,7 +22,7 @@ This is a simple contact management system written in C. It allows users to mana
 - [ ] Import/export files as other formats (JSON, vCard, etc)
 - [ ] Undo/Redo
 - [ ] Encryption
-- [ ] GUI (Will be done in a long time)
+- [ ] GUI
 - [ ] Audit log
 - [ ] Multi-field search
 - [ ] Unicode support
