@@ -77,8 +77,9 @@ Contact Management System
 - [ ] Encryption
 - [ ] GUI (Will be done in a long time)
 - [ ] Audit log
-- [ ] Confirmation prompts for destructive actions
+- [x] Confirmation prompts for destructive actions
 - [ ] Multi-field search
+- [ ] Unicode support
 
 ## Contributing
 - Contributions, bug reports, and feature requests are welcome. Please submit them via the GitHub repository
