@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
+#include <stdbool.h>
 #include "error_codes.h"
 
 #define MAX_STRING 128
@@ -63,7 +64,7 @@ int strcasecmp_custom(const char *s1, const char *s2) {
     return tolower((unsigned char)*s1) - tolower((unsigned char)*s2);
 }
 
-int isValidEmail(const char *email) {
+bool isValidEmail(const char *email) {
     if (email == NULL || strlen(email) < 3) {  // Minimum length: a@b
         return 0;
     }
