@@ -14,6 +14,19 @@ This is a simple contact management system written in C. It allows users to mana
 - **Whitespace Trimming**: Automatically trim leading and trailing whitespace for inputs.
 - **Input Validation**: Checks for valid emails.
 
+## Features to be added
+- [x] Input validation
+- [x] Confirmation prompts for destructive actions
+- [ ] Sorting by fields
+- [ ] Groups (Work, family, friends, etc)
+- [ ] Import/export files as other formats (JSON, vCard, etc)
+- [ ] Undo/Redo
+- [ ] Encryption
+- [ ] GUI (Will be done in a long time)
+- [ ] Audit log
+- [ ] Multi-field search
+- [ ] Unicode support
+
 ## File Structure
 
 - **Source Code**: The main program is contained in a single C file.
@@ -67,19 +80,6 @@ Contact Management System
 ## Limitations
 - The program assumes the `contacts.csv` file exists in the same directory. If the file is missing, it will create one upon saving.
 - Case-insensitive comparison is used for names, but sorting and searching assume ASCII characters.
-
-## Features to be added
-- [x] Input validation
-- [ ] Sorting by fields
-- [ ] Groups (Work, family, friends, etc)
-- [ ] Import/export files as other formats (JSON, vCard, etc)
-- [ ] Undo/Redo
-- [ ] Encryption
-- [ ] GUI (Will be done in a long time)
-- [ ] Audit log
-- [x] Confirmation prompts for destructive actions
-- [ ] Multi-field search
-- [ ] Unicode support
 
 ## Contributing
 - Contributions, bug reports, and feature requests are welcome. Please submit them via the GitHub repository
