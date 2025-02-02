@@ -12,11 +12,12 @@ typedef struct {
     char name[MAX_STRING];
     char phoneNumber[MAX_STRING];
     char email[MAX_STRING];
+    char group[MAX_STRING];
 } Contact;
 
 // Function to serialize a contact into a string
 void serialize(const Contact *contact, char *output) {
-    sprintf(output, "%s,%s,%s", contact->name, contact->phoneNumber, contact->email);
+    sprintf(output, "%s,%s,%s,%s", contact->name, contact->phoneNumber, contact->email, contact->group);
 }
 
 // Function to deserialize a contact from a string
@@ -30,6 +31,8 @@ Contact deserialize(const char *data) {
     strcpy(contact.phoneNumber, token);
     token = strtok(NULL, ",");
     strcpy(contact.email, token);
+    token = strtok(NULL, ",");
+    strcpy(contact.group, token);
 
     return contact;
 }
@@ -115,6 +118,7 @@ void searchContact(const Contact *contacts, int contactCount, const char *name) 
         printf("Name: %s\n", contacts[index].name);
         printf("Phone Number: %s\n", contacts[index].phoneNumber);
         printf("Email: %s\n", contacts[index].email);
+        printf("Group: %s\n", contacts[index].group);
     } else {
         printf("Contact not found.\n");
     }
@@ -162,6 +166,12 @@ void addContact(Contact **contacts, int *contactCount, int *capacity) {
     fgets(newContact.email, MAX_STRING, stdin);
     newContact.email[strcspn(newContact.email, "\n")] = 0;
     trimWhitespace(newContact.email);
+
+    printf("Enter group: ");
+    fgets(newContact.group, MAX_STRING, stdin);
+    newContact.group[strcspn(newContact.group, "\n")] = 0;
+    trimWhitespace(newContact.group);
+
 
   if (!isValidEmail(newContact.email)) {
     printf("Error: invalid email!\n");
@@ -214,6 +224,7 @@ void displayContacts(const Contact *contacts, int contactCount) {
         printf("Name: %s\n", contacts[i].name);
         printf("Phone Number: %s\n", contacts[i].phoneNumber);
         printf("Email: %s\n", contacts[i].email);
+        printf("Group: %s\n", contacts[i].group);
         printf("-------------------\n");
     }
 }
@@ -279,6 +290,15 @@ void editContact(Contact *contacts, int contactCount) {
     strcpy(contact->email, newEmail);
 }
 
+    printf("Enter new group (leave blank to keep current): ");
+    char newGroup[MAX_STRING];
+    fgets(newGroup, MAX_STRING, stdin);
+    newGroup[strcspn(newGroup, "\n")] = 0;
+    trimWhitespace(newGroup);
+    if (strlen(newGroup) > 0) {
+        strcpy(contact->group, newGroup);
+
+    }
     printf("Contact updated.\n");
 }
 
