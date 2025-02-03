@@ -16,9 +16,9 @@ This is a simple contact management system written in C. It allows users to mana
 
 ## Features to be added
 - [x] Input validation
+- [x] Groups (Work, family, friends, etc)
 - [x] Confirmation prompts for destructive actions
 - [ ] Sorting by fields
-- [ ] Groups (Work, family, friends, etc)
 - [ ] Filter by group
 - [ ] Import/export files as other formats (JSON, vCard, etc)
 - [ ] Undo/Redo
