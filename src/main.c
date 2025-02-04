@@ -375,7 +375,7 @@ int main() {
     Contact *contacts = malloc(10 * sizeof(Contact));  // Initial capacity of 10
     int contactCount = 0;
     int capacity = 10;
-    const char *filename = "../contacts.csv";
+    const char *filename = "contacts.csv";
 
     loadContacts(&contacts, &contactCount, &capacity, filename);
 
