@@ -126,7 +126,7 @@ void searchContact(const Contact *contacts, int contactCount, const char *name) 
 }
 
 // Function to check for duplicates
-int checkForDuplicates(const Contact *contacts, int contactCount, const Contact *newContact) {
+bool checkForDuplicates(const Contact *contacts, int contactCount, const Contact *newContact) {
     for (int i = 0; i < contactCount; ++i) {
         if (strcasecmp_custom(contacts[i].name, newContact->name) == 0 &&
             strcasecmp_custom(contacts[i].phoneNumber, newContact->phoneNumber) == 0 &&
